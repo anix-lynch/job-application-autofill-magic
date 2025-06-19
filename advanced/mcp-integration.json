@@ -1,0 +1,35 @@
+{
+  "mcp_config": {
+    "job_autofill": {
+      "name": "Job Application Autofill",
+      "description": "Instantly fill job application forms",
+      "script_path": "./autofill-magic.js",
+      "profile_path": "./examples/profile-template.json",
+      "supported_platforms": [
+        "lever",
+        "greenhouse",
+        "workday",
+        "bamboohr",
+        "teamtailor",
+        "generic"
+      ],
+      "automation_tools": {
+        "n8n": {
+          "webhook_url": "https://your-n8n.app/webhook/job-autofill",
+          "trigger_events": ["new_job_found", "bulk_apply_request"]
+        },
+        "zapier": {
+          "trigger_type": "airtable_new_record",
+          "action_type": "browser_automation"
+        }
+      }
+    }
+  },
+  "claude_prompts": {
+    "job_search_assistant": {
+      "trigger": "/autofill",
+      "description": "Generate autofill script for specific job posting",
+      "template": "Generate a customized autofill script for {job_url} with profile {profile_name}"
+    }
+  }
+}

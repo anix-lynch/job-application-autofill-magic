@@ -22,8 +22,8 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci --only=production && npm cache clean --force
+# Install dependencies (fallback to npm install if no lock file)
+RUN if [ -f package-lock.json ]; then npm ci --only=production; else npm install --only=production; fi && npm cache clean --force
 
 # Create directories for data persistence
 RUN mkdir -p /app/profiles /app/logs /app/cache && \

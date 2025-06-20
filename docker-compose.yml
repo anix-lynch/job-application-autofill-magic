@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  job-autofill:
+    build: .
+    container_name: job_autofill_magic
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - SKYVERN_API_KEY=${SKYVERN_API_KEY}
+      - BRAVE_API_KEY=${BRAVE_API_KEY}
+      - CLAUDE_API_KEY=${CLAUDE_API_KEY}
+      - ENCRYPTION_KEY=${ENCRYPTION_KEY}
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./profiles:/app/profiles:ro
+      - ./logs:/app/logs
+      - ./cache:/app/cache
+    networks:
+      - job_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  redis:
+    image: redis:7-alpine
+    container_name: job_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - job_network
+    command: redis-server --appendonly yes
+
+  nginx:
+    image: nginx:alpine
+    container_name: job_nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - job-autofill
+    networks:
+      - job_network
+
+volumes:
+  redis_data:
+
+networks:
+  job_network:
+    driver: bridge

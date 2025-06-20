@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 Job Autofill Magic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .title {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(240, 240, 240, 0.5);
+            border-radius: 15px;
+        }
+        
+        .section h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin: 10px;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .copy-button {
+            background: #48bb78;
+            font-size: 0.9em;
+            padding: 8px 15px;
+        }
+        
+        .profile-form {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .input-group label {
+            color: #555;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .input-group input {
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">🔥 Job Autofill Magic</h1>
+            <p class="subtitle">21x faster job applications • Copy-paste ready</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">21x</div>
+                <div class="stat-label">Faster</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">&lt;1s</div>
+                <div class="stat-label">Per App</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">$4</div>
+                <div class="stat-label">Per 100 Jobs</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>⚡ Quick Start (Copy & Paste)</h3>
+            <p>Copy this script and paste into any job site's browser console:</p>
+            <div class="code-block" id="quickScript">
+const data={name:"Your Name",email:"your@email.com",phone:"(555) 123-4567",location:"Your City, State",org:"Your Company"};document.querySelectorAll('input').forEach(i=>{const f=(i.name+i.placeholder).toLowerCase();if(f.includes('name'))i.value=data.name;else if(f.includes('email'))i.value=data.email;else if(f.includes('phone'))i.value=data.phone;else if(f.includes('location'))i.value=data.location;else if(f.includes('org')||f.includes('company'))i.value=data.org;});console.log('🎊 Job application auto-filled!');
+            </div>
+            <button class="button copy-button" onclick="copyToClipboard('quickScript')">📋 Copy Script</button>
+        </div>
+
+        <div class="section">
+            <h3>👤 Customize Your Profile</h3>
+            <div class="profile-form">
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" id="profileName" placeholder="Your Full Name">
+                </div>
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" id="profileEmail" placeholder="your@email.com">
+                </div>
+                <div class="input-group">
+                    <label>Phone</label>
+                    <input type="tel" id="profilePhone" placeholder="(555) 123-4567">
+                </div>
+                <div class="input-group">
+                    <label>Location</label>
+                    <input type="text" id="profileLocation" placeholder="City, State">
+                </div>
+                <div class="input-group">
+                    <label>Current Company</label>
+                    <input type="text" id="profileCompany" placeholder="Your Company">
+                </div>
+            </div>
+            <button class="button" onclick="generateCustomScript()">🔥 Generate My Custom Script</button>
+        </div>
+
+        <div class="section">
+            <h3>🎯 API Endpoints</h3>
+            <p>Access programmatically via API:</p>
+            <div class="code-block">
+GET  /autofill-script          # Get raw autofill script
+POST /api/generate-autofill    # Generate custom script
+GET  /api/profiles             # List saved profiles
+POST /api/batch-apply          # Batch process jobs
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>🚀 Deploy Your Own</h3>
+            <div class="code-block">
+git clone https://github.com/anix-lynch/job-application-autofill-magic.git
+cd job-application-autofill-magic
+docker-compose up -d
+            </div>
+            <a href="https://github.com/anix-lynch/job-application-autofill-magic" class="button" target="_blank">
+                📂 View on GitHub
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('🎊 Script copied! Paste into any job site console.');
+            });
+        }
+
+        function generateCustomScript() {
+            const name = document.getElementById('profileName').value || 'Your Name';
+            const email = document.getElementById('profileEmail').value || 'your@email.com';
+            const phone = document.getElementById('profilePhone').value || '(555) 123-4567';
+            const location = document.getElementById('profileLocation').value || 'Your City, State';
+            const company = document.getElementById('profileCompany').value || 'Your Company';
+
+            const customScript = `const data={name:"${name}",email:"${email}",phone:"${phone}",location:"${location}",org:"${company}"};document.querySelectorAll('input').forEach(i=>{const f=(i.name+i.placeholder).toLowerCase();if(f.includes('name'))i.value=data.name;else if(f.includes('email'))i.value=data.email;else if(f.includes('phone'))i.value=data.phone;else if(f.includes('location'))i.value=data.location;else if(f.includes('org')||f.includes('company'))i.value=data.org;});console.log('🎊 Job application auto-filled!');`;
+
+            navigator.clipboard.writeText(customScript).then(() => {
+                alert('🔥 Your custom script is ready! Paste into any job site console.');
+            });
+        }
+
+        // Auto-focus first input
+        document.getElementById('profileName').focus();
+    </script>
+</body>
+</html>
